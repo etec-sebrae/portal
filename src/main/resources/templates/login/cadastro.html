@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cadastro Usuario</title>
+</head>
+
+<body>
+	<h1>Tela de Cadastro Usuario</h1>
+	<form action="/cadastrologin" method="post">
+		<label><b>Nome Completo</b></label> 
+		<input type="text" placeholder="Enter nome" name="nome" required> 
+		
+		<label><b>E-mail</b></label> 
+		<input type="email"	placeholder="Enter email" name="email" required> 
+		
+		<label><b>Matricula</b></label> 
+		<input type="text"	placeholder="Enter matricula" name="matricula" required> 
+		
+		<label><b>Senha</b></label> 
+		<input type="password"	placeholder="Enter senha" name="password" required> 
+		
+		<div class="clearfix">
+			<button type="button" class="cancelbtn">Cancel</button>
+			<button type="submit" class="signupbtn">Cadastrar</button>
+		</div>
+	</form>
+</body>
+</html>
