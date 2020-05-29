@@ -1,6 +1,5 @@
 package br.etec.sebrae.portal.controller;
 
-import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,9 +8,7 @@ import br.etec.sebrae.portal.dtos.LoginDto;
 
 @Controller
 public class LoginController {
-	
-	//Logger log = LogFactory.getLog(LoginController.class);	
-	
+		
 	@RequestMapping("/logar")
 	public String logar(LoginDto login) {
 		
