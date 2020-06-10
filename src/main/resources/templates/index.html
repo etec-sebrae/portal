@@ -1,25 +1,50 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Login</title>
-<body>
+<title>Login page</title>
+<link href="css/style.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	
+</script>
 
-	<h1>login</h1>
-	<form action="/logar" method="post">
-		<label for="email"><b>Email</b></label> <input type="text"
-			placeholder="Enter Email" name="email" required> <label
-			for="psw"><b>Password</b></label> <input type="password"
-			placeholder="Enter Password" name="password" required> <label>
-			<input type="checkbox" checked="checked" name="remember"
-			style="margin-bottom: 15px"> Remember me
-		</label>
-		<span th:text="${sucesso}"></span>
-		<div class="clearfix">
-			<button type="button" class="cancelbtn">Cancel</button>
-			<button type="submit" class="signupbtn">Sign Up</button>
+<script>
+	$(function() {
+		$("#logar").click(function() {
+			$("#formLogar").submit();
+		});
+	});
+
+	$(function() {
+		$("#cadastro_op").click(function() {
+			$("#formCadastro").submit();
+		});
+	});
+</script>
+
+</head>
+<body>
+	<div class="container">
+
+		<div class="box">
+			<h3>Login Operador</h3>
+			<form action="/logar" method="post" id="formLogar">			
+					
+				<label for="username">Email</label>: 
+				<input type="text"	placeholder="Enter Email" id="email" name="email" autofocus="autofocus" required /><br /><br />
+				
+				<label for="password">Password</label>:
+				<input type="password" id="password" placeholder="Enter Password" name="password" required /><br /> <br />
+				
+				<input type="button" id="logar" value="Logar" /> 
+				<input type="button" id="cadastro_op" value="Cadastrar Operador" />
+			
+			</form>			
+			<form action="/cadastrologin" method="post" id="formCadastro">
+			</form>
+			
 		</div>
-	</form>
+	</div>
 </body>
 </html>
 
