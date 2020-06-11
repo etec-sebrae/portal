@@ -12,11 +12,11 @@ public class LoginController {
 	@RequestMapping("/logar")
 	public String logar(LoginDto login) {
 		
-		String emailApi = "admin@admin.com";
+		String emailApi = "admin";
 		String senhaApi = "123456";
 		
 		if(emailApi.equals(login.getEmail()) && senhaApi.equals(login.getPassword())) {
-			return "redirect:solicitacoes";	
+			return "redirect:loginOperador";	
 		}		
 		return "login/cadastro";		
 	}	
@@ -33,4 +33,10 @@ public class LoginController {
 		view.addObject("sucesso", "Cadastro efetuado com sucesso!");
 		return view	;	
 	}	
+	
+	@RequestMapping("/loginOperador")
+	public ModelAndView loginOperador() {			
+		ModelAndView view = new ModelAndView("operador/home_operador");		
+		return view;		
+	}
 }
