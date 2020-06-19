@@ -1,1 +1,28 @@
-Tela de solicitacoes
+ <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+	<h2>Solicitações</h2>
+
+	<table style="width: 100%">
+	<thead>
+		<tr>
+			<th>Nome Aluno</th>
+			<th>Tipo Documento</th>
+			<th>Data Solicitaçao</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		 <tr th:each="solicitacao : ${solicitacoes}">
+			<td><span th:text="${solicitacao.aluno}"></span></td>
+			<td><span th:text="${solicitacao.documento}"></span></td>
+			<td><span th:text="${solicitacao.data_solicitacao}"></span></td>
+			<td><span th:text="${solicitacao.status}"></span></td>		
+		</tr>		
+			</tbody>		
+	</table>
+</body>
+</html>
