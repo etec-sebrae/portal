@@ -21,13 +21,16 @@ public class SolicitacoesController {
 		
 		RestTemplate template = new RestTemplate();
 		
-		final String urilistaSolicitacoes = "http://localhost:8080/api/solicitacoes";
+		final String urilistaSolicitacoes = "https://seetecc.herokuapp.com/api/solicitacoes";
 		
 		Resposta<SolicitacoesDto> result = template.getForObject(urilistaSolicitacoes, Resposta.class);		
 		
-		ModelAndView view = new ModelAndView("documentos/solicitacoes");	 
+		ModelAndView view = new ModelAndView("documentos/solicitacoes");
 		
-		view.addObject("solicitacoes", result.getData());
+		List<SolicitacoesDto> lista = result.getData();
+		
+		
+		view.addObject("solicitacoes", lista);
 		
 		return view;
 		
