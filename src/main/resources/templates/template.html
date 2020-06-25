@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Administre os documentos dos dicentes de forma ágil e eficás com o Seetec...">
+        <meta name="keywords" content="Seetec, Secretaria Eletrônica">
+
+        <title>Seetec Painel</title>
+        <link rel="stylesheet" th:href="@{/static/vendors/ti-icons/css/themify-icons.css}">
+        <link rel="stylesheet" th:href="@{/static/vendors/base/vendor.bundle.base.css}">
+        <link rel="stylesheet" th:href="@{/static/css/style.css}">
+        <link rel="shortcut icon" th:href="@{/static/images/icone.png}" />
+    </head>
+
+
+    <body>
+        <div class="container-scroller">
+            <!-- Nav Bar (notificações e dados de perfil)-->
+            <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" th:replace="fragmentos/navbar :: navbar">
+                
+            </nav>
+            <!--Fim da Nav Bar-->
+
+            <!-- Menu lateral e conteúdo da página-->
+            <div class="container-fluid page-body-wrapper">
+                <!-- Menu lateral-->
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+
+                </nav>
+                <!-- Fim do menu lateral-->
+
+                <!-- Conteudo da página e footer-->
+                <div class="main-panel">
+                    <div class="content-wrapper" th:include="${conteudo} :: conteudo">
+                        <!-- Todo conteúdo vai aqui dentro -->
+                    </div>  
+                    <footer class="footer" th:insert="fragmentos/footer">
+                        <!-- Aqui vai o footer (rodapé) -->
+                    </footer>
+                </div>  
+                <!-- Fim do conteudo da página e do footer-->
+            </div>
+        </div>
+
+        <script src="vendors/base/vendor.bundle.base.js"></script>
+        <script src="vendors/chart.js/Chart.min.js"></script>
+        <script src="js/off-canvas.js"></script>
+        <script src="js/hoverable-collapse.js"></script>
+        <script src="js/template.js"></script>
+        <script src="js/todolist.js"></script>
+        <script src="js/dashboard.js"></script>
+    </body>
+</html>
