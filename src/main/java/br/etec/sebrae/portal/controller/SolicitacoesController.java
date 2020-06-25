@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,20 +18,24 @@ import br.etec.sebrae.portal.dtos.SolicitacoesDto;
 public class SolicitacoesController {
 	
 	@RequestMapping("/consultar")
-	public ModelAndView consultarSolicitacoes() {
+	public ModelAndView consultarSolicitacoes(ModelMap model) {
 		
 		RestTemplate template = new RestTemplate();
 		
-		final String urilistaSolicitacoes = "http://localhost:8080/api/solicitacoes";
+		final String urilistaSolicitacoes = "http://seetecc.herokuapp.com/api/solicitacoes";
 		
 		Resposta<SolicitacoesDto> result = template.getForObject(urilistaSolicitacoes, Resposta.class);		
 		
-		ModelAndView view = new ModelAndView("documentos/solicitacoes");	 
+		model.addAttribute("solicitacoes", result.getData());
+		model.addAttribute("conteudo", "/documentos/solicitacoes");
 		
-		view.addObject("solicitacoes", result.getData());
+		return new ModelAndView("template", model);
 		
-		return view;
+		//ModelAndView view = new ModelAndView("documentos/solicitacoes");	 
 		
-	}
+		//view.addObject("solicitacoes", result.getData());
+		//view.addObject(attributeValue)
+		//return view;
+	} 
 
 }

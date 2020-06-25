@@ -7,17 +7,17 @@
         <meta name="keywords" content="Seetec, Secretaria Eletrônica">
 
         <title>Seetec Painel</title>
-        <link rel="stylesheet" th:href="@{/static/vendors/ti-icons/css/themify-icons.css}">
-        <link rel="stylesheet" th:href="@{/static/vendors/base/vendor.bundle.base.css}">
-        <link rel="stylesheet" th:href="@{/static/css/style.css}">
-        <link rel="shortcut icon" th:href="@{/static/images/icone.png}" />
+        <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
+        <link rel="stylesheet" th:href="@{/vendors/base/vendor.bundle.base.css}">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+        <link rel="shortcut icon" th:href="@{/images/icone.png}" />
     </head>
 
 
     <body>
         <div class="container-scroller">
             <!-- Nav Bar (notificações e dados de perfil)-->
-            <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" th:replace="fragmentos/navbar :: navbar">
+            <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" th:replace="fragments/navbar :: navbar">
                 
             </nav>
             <!--Fim da Nav Bar-->
@@ -25,7 +25,7 @@
             <!-- Menu lateral e conteúdo da página-->
             <div class="container-fluid page-body-wrapper">
                 <!-- Menu lateral-->
-                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <nav class="sidebar sidebar-offcanvas" id="sidebar" th:replace="fragments/menu :: menu">
 
                 </nav>
                 <!-- Fim do menu lateral-->
@@ -35,7 +35,7 @@
                     <div class="content-wrapper" th:include="${conteudo} :: conteudo">
                         <!-- Todo conteúdo vai aqui dentro -->
                     </div>  
-                    <footer class="footer" th:insert="fragmentos/footer">
+                    <footer class="footer" th:insert="fragments/footer">
                         <!-- Aqui vai o footer (rodapé) -->
                     </footer>
                 </div>  
@@ -43,12 +43,12 @@
             </div>
         </div>
 
-        <script src="vendors/base/vendor.bundle.base.js"></script>
-        <script src="vendors/chart.js/Chart.min.js"></script>
-        <script src="js/off-canvas.js"></script>
-        <script src="js/hoverable-collapse.js"></script>
-        <script src="js/template.js"></script>
-        <script src="js/todolist.js"></script>
-        <script src="js/dashboard.js"></script>
+        <script th:src="@{/vendors/base/vendor.bundle.base.js}"></script>
+        <script th:src="@{/vendors/chart.js/Chart.min.js}"></script>
+        <script th:src="@{/js/off-canvas.js}"></script>
+        <script th:src="@{/js/hoverable-collapse.js}"></script> 
+        <script th:src="@{/js/template.js}"></script>
+        <script th:src="@{/js/todolist.js}"></script>
+        <script th:src="@{/js/dashboard.js}"></script>
     </body>
 </html>
