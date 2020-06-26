@@ -31,11 +31,6 @@ public class SolicitacoesController {
 		
 		return new ModelAndView("template_painel", model);
 		
-		//ModelAndView view = new ModelAndView("documentos/solicitacoes");	 
-		
-		//view.addObject("solicitacoes", result.getData());
-		//view.addObject(attributeValue)
-		//return view;
 	} 
 
 }
