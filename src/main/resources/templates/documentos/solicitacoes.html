@@ -29,19 +29,23 @@
 							<tr th:each="solicitacao : ${solicitacoes}">
 								<td><span th:text="${solicitacao.Aluno}"></span></td>
 								<td><span th:text="${solicitacao.Documento}"></span></td>
-								<td><span th:text="${solicitacao.Status}"></span></td>
-								<!--<td th:switch="${#lists.size(teacher.courses)}">
-									<span th:case="'0'">NO COURSES YET!</span>
-									<span th:case="'1'" th:text="${teacher.courses[0]}"></span>
-									<div th:case="*">
-										<div th:each="course:${teacher.courses}" th:text="${course}"/>
-									</div>
-								</td>-->
+								<td th:switch="${solicitacao.Status}">
+									<span th:case="'1'">Pendente</span>
+									<span th:case="'2'">Concluida</span>
+									<span th:case="'3'">Entregue</span>
+									<span th:case="'4'">Negada</span>
+								</td>
 								<td>
-									<button type="button" class="btn btn-success btn-icon-text btn-sm">
-										<i class="ti-check btn-icon-prepend"></i>                                                    
-										Concluir
-								  	</button>
+									<span th:if="${solicitacao.Status == 1}">
+										<button type="button" class="btn btn-success btn-icon-text btn-sm">
+											<i class="ti-check btn-icon-prepend"></i>                                                    
+											Concluir
+										</button>
+										<button type="button" class="btn btn-danger btn-icon-text btn-sm">
+											<i class="ti-check btn-icon-prepend"></i>                                                    
+											Negar
+										</button>
+									</span>
 								</td>
 							</tr>
 						</tbody>

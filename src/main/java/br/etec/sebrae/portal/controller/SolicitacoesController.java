@@ -29,7 +29,7 @@ public class SolicitacoesController {
 		model.addAttribute("solicitacoes", result.getData());
 		model.addAttribute("conteudo", "/documentos/solicitacoes");
 		
-		return new ModelAndView("template", model);
+		return new ModelAndView("template_painel", model);
 		
 		//ModelAndView view = new ModelAndView("documentos/solicitacoes");	 
 		
