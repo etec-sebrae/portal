@@ -9,8 +9,11 @@
         <title>Seetec Painel</title>
         <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
         <link rel="stylesheet" th:href="@{/vendors/base/vendor.bundle.base.css}">
+        <link rel="stylesheet" type="text/css" h:href="@{/vendors/dataTables/datatables.min.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+        
         <link rel="shortcut icon" th:href="@{/images/icone.png}" />
+        <script th:src="@{/vendors/jquery/jquery-3.5.1.min.js}"></script>
     </head>
 
 
@@ -43,12 +46,15 @@
             </div>
         </div>
 
+        
         <script th:src="@{/vendors/base/vendor.bundle.base.js}"></script>
         <script th:src="@{/vendors/chart.js/Chart.min.js}"></script>
+        <script type="text/javascript" th:src="@{/vendors/dataTables/datatables.min.js}"></script>
         <script th:src="@{/js/off-canvas.js}"></script>
         <script th:src="@{/js/hoverable-collapse.js}"></script> 
         <script th:src="@{/js/template.js}"></script>
         <script th:src="@{/js/todolist.js}"></script>
         <script th:src="@{/js/dashboard.js}"></script>
+        
     </body>
 </html>

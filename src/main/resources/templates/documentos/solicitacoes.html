@@ -30,13 +30,13 @@
 								<td><span th:text="${solicitacao.Aluno}"></span></td>
 								<td><span th:text="${solicitacao.Documento}"></span></td>
 								<td th:switch="${solicitacao.Status}">
-									<span th:case="'1'">Pendente</span>
-									<span th:case="'2'">Concluida</span>
-									<span th:case="'3'">Entregue</span>
-									<span th:case="'4'">Negada</span>
+									<span th:case="1">Pendente</span> 
+									<span th:case="2">Concluida</span>
+									<span th:case="3">Entregue</span>
+									<span th:case="4">Negada</span> 
 								</td>
 								<td>
-									<span th:if="${solicitacao.Status == 1}">
+									<span th:if="${solicitacao.Status.equals(1)}">
 										<button type="button" class="btn btn-success btn-icon-text btn-sm">
 											<i class="ti-check btn-icon-prepend"></i>                                                    
 											Concluir

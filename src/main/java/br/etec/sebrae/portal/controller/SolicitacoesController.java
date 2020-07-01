@@ -22,7 +22,7 @@ public class SolicitacoesController {
 		
 		RestTemplate template = new RestTemplate();
 		
-		final String urilistaSolicitacoes = "http://seetecc.herokuapp.com/api/solicitacoes";
+		final String urilistaSolicitacoes = "https://api-seetec.herokuapp.com/api/solicitacoes";
 		
 		Resposta<SolicitacoesDto> result = template.getForObject(urilistaSolicitacoes, Resposta.class);		
 		
@@ -30,7 +30,7 @@ public class SolicitacoesController {
 		model.addAttribute("conteudo", "/documentos/solicitacoes");
 		
 		return new ModelAndView("template_painel", model);
-		
+		 
 	} 
 
 }
