@@ -1,1 +1,32 @@
-<h1> Cadastro de Aluno </h1>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<div class="content-wrapper" th:fragment="conteudo">
+		<div class="row">
+			<div class="col-md-12 grid-margin">
+				<div class="d-flex justify-content-between align-items-center">
+					<div>
+						<h4 class="font-weight-bold mb-0">Cadastrar novo aluno</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-12 grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body">
+                        <form action="/aluno/cadastro" method="post">
+                            <input type="text" name="nome" id="nome" placeholder="Digite o nome do aluno">
+                            <input type="password" name="senha" id="senha" placeholder="Digite a senha do aluno">
+                            <input type="text" name="rg" id="rg" placeholder="Digite o RG do aluno">
+                            <input type="text" name="cpf" id="cpf" placeholder="Digite o CPF do aluno">
+                            <input type="email" name="email" id="email" placeholder="Digite o e-mail do aluno" required>
+                            <input type="date" name="data_nasc" id="data_nasc" placeholder="Digite a data de nascimento do aluno">
+                            <input type="text" name="curso" id="curso" placeholder="Digite o curso do aluno">
+                            <button type="submit">Enviar</button>
+                        </form>
+					</div>
+				  </div>
+			</div>
+		</div>
+	</div>  
+</html>

@@ -15,9 +15,9 @@ public class AlunosDto implements Serializable {
     private String rg;
     private String cpf;
     private String email;
-    private Date data_nasc;
+    private String data_nasc;
     private String curso;
-    
+    private String senha;
 	
     public long getId() {
 		return id;
@@ -49,10 +49,10 @@ public class AlunosDto implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getData_nasc() {
+	public String getData_nasc() {
 		return data_nasc;
 	}
-	public void setData_nasc(Date data_nasc) {
+	public void setData_nasc(String data_nasc) {
 		this.data_nasc = data_nasc;
 	}
 	public String getCurso() {
@@ -61,7 +61,13 @@ public class AlunosDto implements Serializable {
 	public void setCurso(String curso) {
 		this.curso = curso;
 	}
-
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
 	
 	
 	
