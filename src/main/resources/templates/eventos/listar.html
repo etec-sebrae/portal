@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div class="content-wrapper" th:fragment="conteudo">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h4 class="font-weight-bold mb-0">Eventos</h4>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-icon-text btn-rounded" th:href="@{/administracao/eventos/novo}">
+                        <i class="ti-plus btn-icon-prepend"></i>Novo Evento
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title mb-0">Registro de eventos</p>
+                    <div class="table-responsive">
+                        <div style="padding: 15px;">
+                            <table class="table display nowrap" style="width:100%" id="table_eventos">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Descrição</th>
+                                        <th>Data Inicial</th>
+                                        <th>Data Final</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="eventos : ${eventos}">
+                                        <td><span th:text="${eventos.nome}"></span></td>
+                                        <td><span th:text="${eventos.descricao}"></span></td>
+                                        <td><span th:text="${eventos.dataInicio}"></span></td>
+                                        <td><span th:text="${eventos.dataFim}"></span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-warning btn-icon-text btn-sm">
+                                                <i class="ti-write btn-icon-prepend"></i>
+                                                Editar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#table_eventos').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+</div>
+
+</html>

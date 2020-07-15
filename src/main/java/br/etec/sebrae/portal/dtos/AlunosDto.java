@@ -5,9 +5,6 @@ import java.util.Date;
 
 public class AlunosDto implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 787241975083815575L;
 	
 	private long id;
@@ -16,9 +13,11 @@ public class AlunosDto implements Serializable {
     private String cpf;
     private String email;
     private String data_nasc;
-    private String curso;
     private String senha;
     private String matricula;
+    private CursosDto[] curso;
+    private String select_cursos;
+    private String[] idCursos;
 	
     public long getId() {
 		return id;
@@ -56,12 +55,6 @@ public class AlunosDto implements Serializable {
 	public void setData_nasc(String data_nasc) {
 		this.data_nasc = data_nasc;
 	}
-	public String getCurso() {
-		return curso;
-	}
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
 	public String getSenha() {
 		return senha;
 	}
@@ -75,8 +68,25 @@ public class AlunosDto implements Serializable {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
-	
-	
+	public CursosDto[] getCurso() {
+		return curso;
+	}
+	public void setCurso(CursosDto[] curso) {
+		this.curso = curso;
+	}
+
+	public void getSelect_cursos() {
+		
+	}
+	public void setSelect_cursos(String select_cursos) {
+		
+		/*String array[] = select_cursos.split(",");
+		
+		for (int i=0; i <array.length; i++ ) {
+			curso[i].setId(Long.parseLong(array[i]));
+		}*/
+		
+		this.select_cursos = select_cursos;
+	}
 	
 }

@@ -248,13 +248,31 @@ function Mensagem() {
   });
   
   if (data['msg'] != null || data['msg'] != undefined){
-      if(path = 'aluno/consultar'){
+      if(path == 'aluno/consultar'){
         if (data['msg'] == 'success'){
           criaAlerta("success", "Aluno registrado com sucesso!");
         }
         else
         {
           criaAlerta("danger", "Não foi possível registrar o aluno!");
+        }
+      }
+      else if(path == '/administracao/operadores/novo'){
+        if (data['msg'] == 'success'){
+          criaAlerta("success", "Operador registrado com sucesso!");
+        }
+        else
+        {
+          criaAlerta("danger", "Não foi possível registrar o operador!");
+        }
+      }
+      else if(path == '/administracao/cursos/novo'){
+        if (data['msg'] == 'success'){
+          criaAlerta("success", "Curso registrado com sucesso!");
+        }
+        else
+        {
+          criaAlerta("danger", "Não foi possível registrar o curso!");
         }
       }
   }

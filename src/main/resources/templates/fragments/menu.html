@@ -14,6 +14,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" th:href="@{/eventos/}">
+                    <i class="ti-star menu-icon"></i>
+                    <span class="menu-title">Eventos</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" th:href="@{/aluno/consultar/}">
                     <i class="ti-face-smile menu-icon"></i>
                     <span class="menu-title">Alunos</span>
@@ -27,8 +33,8 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                   <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#">Cursos</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Operadores</a></li>
+                    <li class="nav-item"> <a class="nav-link" th:href="@{/administracao/cursos/}">Cursos</a></li>
+                    <li class="nav-item"> <a class="nav-link" th:href="@{/administracao/operadores/}">Operadores</a></li>
                   </ul>
                 </div>
             </li>

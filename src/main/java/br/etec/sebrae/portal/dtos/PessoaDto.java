@@ -3,6 +3,8 @@ package br.etec.sebrae.portal.dtos;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PessoaDto implements Serializable{
 
 	private static final long serialVersionUID = -2874048300639662153L;
@@ -12,6 +14,8 @@ public class PessoaDto implements Serializable{
 	private int matricula;
 	private String rg;
 	private String cpf;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date data_nasc;
 	private String email;
 	private String tipo;

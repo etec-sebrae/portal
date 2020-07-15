@@ -1,30 +1,27 @@
 package br.etec.sebrae.portal.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.etec.sebrae.portal.dtos.EventosDto;
 import br.etec.sebrae.portal.dtos.Resposta;
-import br.etec.sebrae.portal.dtos.SolicitacoesDto;
 import br.etec.sebrae.portal.service.VerificaAuth;
 
 @Controller
-@RequestMapping("/solicitacoes")
-public class SolicitacoesController {
+@RequestMapping("/eventos")
+public class EventosController {
 	
 	@Autowired
 	VerificaAuth auth;
 	
-	@RequestMapping("/consultar")
+	@RequestMapping("/")
 	public ModelAndView consultarSolicitacoes(ModelMap model, HttpSession session) {
 		
 		model = auth.VerificaAuth(model, session);
@@ -32,17 +29,21 @@ public class SolicitacoesController {
 			return new ModelAndView("login");
 		}
 		
-		/*RestTemplate template = new RestTemplate();
+		RestTemplate restTemplate = new RestTemplate();
 		
-		final String urilistaSolicitacoes = "https://api-seetec.herokuapp.com/api/solicitacoes";
+		final String urilistaEventos = "https://api-seetec.herokuapp.com/api/evento";
 		
-		Resposta<SolicitacoesDto> result = template.getForObject(urilistaSolicitacoes, Resposta.class);		
+		/*ResponseEntity<EventosDto[]> response = restTemplate.getForEntity(urilistaEventos,EventosDto[].class);
+		EventosDto[] eventos = response.getBody();
+		model.addAttribute("eventos", eventos);*/
 		
-		model.addAttribute("solicitacoes", result.getData());*/
-		model.addAttribute("conteudo", "/documentos/solicitacoes");
+		Resposta<EventosDto> result = restTemplate.getForObject(urilistaEventos, Resposta.class);		
+		
+		model.addAttribute("eventos", result.getContent());
+		
+		model.addAttribute("conteudo", "/eventos/listar");
 		
 		return new ModelAndView("template_painel", model);
-		 
-	} 
-
-}
+	}
+	
+}	
