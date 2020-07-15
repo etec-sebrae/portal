@@ -9,7 +9,7 @@
         <title>Seetec Painel</title>
         <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
         <link rel="stylesheet" th:href="@{/vendors/base/vendor.bundle.base.css}">
-        <link rel="stylesheet" type="text/css" h:href="@{/vendors/dataTables/datatables.min.css}"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/vendors/dataTables/datatables.min.css}"/>
         <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
         
         <link rel="shortcut icon" th:href="@{/images/icone.png}" />
@@ -17,7 +17,7 @@
     </head>
 
 
-    <body>
+    <body onload="Mensagem()">
         <div class="container-scroller">
             <!-- Nav Bar (notificações e dados de perfil)-->
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row" th:replace="fragments/navbar :: navbar">
@@ -35,8 +35,9 @@
 
                 <!-- Conteudo da página e footer-->
                 <div class="main-panel">
+                    
                     <div class="content-wrapper" th:include="${conteudo} :: conteudo">
-                        <!-- Todo conteúdo vai aqui dentro -->
+                        
                     </div>  
                     <footer class="footer" th:insert="fragments/footer">
                         <!-- Aqui vai o footer (rodapé) -->

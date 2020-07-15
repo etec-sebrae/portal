@@ -13,5 +13,4 @@ public class Resposta<T> {
 		this.data = data;
 	}
 	
-
 }

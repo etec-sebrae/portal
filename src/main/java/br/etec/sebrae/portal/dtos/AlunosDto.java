@@ -18,6 +18,7 @@ public class AlunosDto implements Serializable {
     private String data_nasc;
     private String curso;
     private String senha;
+    private String matricula;
 	
     public long getId() {
 		return id;
@@ -68,6 +69,12 @@ public class AlunosDto implements Serializable {
 		this.senha = senha;
 	}
 	
+	public String getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
 	
 	
 	

@@ -21358,4 +21358,9 @@ dl li {
   outline: 1px solid slategrey;
 }
 
+.hiddenAll{
+  display: none;
+  visibility: hidden;
+}
+
 /*# sourceMappingURL=maps/style.css.map */

@@ -24,7 +24,7 @@ public class LoginDto implements Serializable {
 	}
 
 	public String getPassword() {
-		return password;
+		return password; 
 	}
 
 	public void setPassword(String password) {
