@@ -1,13 +1,16 @@
 package br.etec.sebrae.portal.controller;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -82,43 +85,41 @@ public class AlunoController {
 	
 	 
 	@RequestMapping("/cadastro")
-	public String cadastroAluno(ModelMap model, AlunosDto aluno) {
+	public String cadastroAluno(ModelMap model, AlunosDto aluno) {		
 		
-		Gson gson = new Gson(); 
-		String recuperaToken = gson.toJson(aluno);
+			
+		Gson g = new Gson(); 
+		aluno.setCursos(mapperId(aluno.getSelect_cursos()));
+		aluno.setSelect_cursos(null);
+		String str = g.toJson(aluno);
+		Gson gson =  g.fromJson(str, Gson.class);
+		//g.fromJson(str,String.class);
 		
+		
+		
+		System.out.println(gson);
+		
+		/*
+		 * Player p = g.fromJson(jsonString, Player.class)
+		 * 
+		 * Read more:
+		 * https://www.java67.com/2016/10/3-ways-to-convert-string-to-json-object-in-
+		 * java.html#ixzz6SJHrsC7M
+		 */		
 		
 		try {
+			final String urilistaAlunos = "https://api-seetec.herokuapp.com/api/aluno";
 			HttpHeaders headers = new HttpHeaders();
 	        headers.setContentType(MediaType.APPLICATION_JSON);
+	        headers.add("content-type", "application/x-www-form-urlencoded"); 
 	        
-	        System.out.println(recuperaToken);
+	        RestTemplate template = new RestTemplate();        
+	        Map<String,Object> jsonNodesUser = gson.fromJson(str, Map.class);
+	        
+	        ResponseEntity<String> response = template.postForEntity(urilistaAlunos, jsonNodesUser, String.class);
+	        
 	        return "redirect:/aluno/consultar?msg=success";
 	        
-		    /*Map<String, Object> map = new HashMap<>();
-			//map.put("cursos", aluno.getIdCursos().toString());
-		    map.put("nome", aluno.getNome());
-		    map.put("rg", aluno.getRg());
-		    map.put("cpf", aluno.getCpf());
-		    map.put("senha", aluno.getSenha());
-		    map.put("email", aluno.getEmail());
-		    map.put("data_nasc", "2020-06-25");
-		    map.put("matricula", aluno.getMatricula());
-		    
-		    System.out.println(map);
-			RestTemplate template = new RestTemplate();
-						
-			final String urilistaAlunos = "https://api-seetec.herokuapp.com/api/aluno";
-			ResponseEntity<String> response = template.postForEntity(urilistaAlunos, map, String.class);
-			int codestatus = response.getStatusCodeValue();
-			System.out.println(codestatus);
-			
-			if (codestatus == 200 || codestatus == 201) {
-				return "redirect:/aluno/consultar?msg=success";
-			}
-			else {
-				return "redirect:/aluno/consultar?msg=failure";
-			}*/
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -130,6 +131,24 @@ public class AlunoController {
 	@RequestMapping("/alterar")
 	public String alterarAluno() {		
 		return "aluno/alterar_aluno";		 
+	}
+	
+	List<CursosDto> mapperId(String ids){
+		String array[] = ids.split(",");
+		List<CursosDto> cursos = new ArrayList<CursosDto>();
+		for (int i=0; i <array.length; i++ ) {
+			CursosDto dto = new CursosDto();
+			dto.setId(Long.parseLong(array[i]));
+			cursos.add(dto);
+		}		
+		return cursos;
+		
+		/*
+		
+		for (int i=0; i <array.length; i++ ) {
+			curso[i].setId(Long.parseLong(array[i]));
+		}*/
+		
 	}
 	
 }

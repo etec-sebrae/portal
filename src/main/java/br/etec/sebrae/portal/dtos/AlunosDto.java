@@ -2,6 +2,7 @@ package br.etec.sebrae.portal.dtos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class AlunosDto implements Serializable {
 	
@@ -15,10 +16,10 @@ public class AlunosDto implements Serializable {
     private String data_nasc;
     private String senha;
     private String matricula;
-    private CursosDto[] curso;
+    private List<CursosDto> cursos;
     private String select_cursos;
     private String[] idCursos;
-	
+ 
     public long getId() {
 		return id;
 	}
@@ -68,15 +69,16 @@ public class AlunosDto implements Serializable {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	public CursosDto[] getCurso() {
-		return curso;
-	}
-	public void setCurso(CursosDto[] curso) {
-		this.curso = curso;
-	}
-
-	public void getSelect_cursos() {
 		
+	
+	public List<CursosDto> getCursos() {
+		return cursos;
+	}
+	public void setCursos(List<CursosDto> cursos) {
+		this.cursos = cursos;
+	}
+	public String  getSelect_cursos() {
+		return select_cursos;
 	}
 	public void setSelect_cursos(String select_cursos) {
 		
