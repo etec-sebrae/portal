@@ -25,7 +25,7 @@ public class IndexController {
 		}
 		
 		//RestTemplate template = new RestTemplate();
-		model.addAttribute("conteudo", "/index");
+		model.addAttribute("conteudo", "index");
 		return new ModelAndView("template_painel", model);		
 	}
 	
