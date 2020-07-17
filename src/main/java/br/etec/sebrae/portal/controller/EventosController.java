@@ -3,7 +3,6 @@ package br.etec.sebrae.portal.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,17 +30,14 @@ public class EventosController {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		
-		final String urilistaEventos = "https://api-seetec.herokuapp.com/api/evento";
-		
-		/*ResponseEntity<EventosDto[]> response = restTemplate.getForEntity(urilistaEventos,EventosDto[].class);
-		EventosDto[] eventos = response.getBody();
-		model.addAttribute("eventos", eventos);*/
-		
+		final String urilistaEventos = "https://api-seetec.herokuapp.com/api/evento";		
+			
+		@SuppressWarnings("unchecked")
 		Resposta<EventosDto> result = restTemplate.getForObject(urilistaEventos, Resposta.class);		
 		
 		model.addAttribute("eventos", result.getContent());
 		
-		model.addAttribute("conteudo", "/eventos/listar");
+		model.addAttribute("conteudo", "eventos/listar");
 		
 		return new ModelAndView("template_painel", model);
 	}

@@ -44,7 +44,7 @@ public class AdministracaoController {
 		
 		model.addAttribute("operadores", operadores);
 		
-		model.addAttribute("conteudo", "/administracao/operadores/listar");
+		model.addAttribute("conteudo", "administracao/operadores/listar");
 		return new ModelAndView("template_painel", model);		
 	}
 	
@@ -56,7 +56,7 @@ public class AdministracaoController {
 			return new ModelAndView("login");
 		}
 		
-		model.addAttribute("conteudo", "/administracao/operadores/cadastrar");
+		model.addAttribute("conteudo", "administracao/operadores/cadastrar");
 		
 		return new ModelAndView("template_painel", model);		
 	}
@@ -84,22 +84,20 @@ public class AdministracaoController {
 			final String urilistaAlunos = "https://api-seetec.herokuapp.com/api/operador";
 			ResponseEntity<String> response = template.postForEntity(urilistaAlunos, map, String.class);
 			int codestatus = response.getStatusCodeValue();
-			//System.out.println(codestatus);
-			//System.out.println(response.getBody());
+			
 			
 			if (codestatus == 200 || codestatus == 201) {
-				return "redirect:/administracao/operadores/novo?msg=success";
-				//return "";
+				return "redirect:/administracao/operadores/novo?msg=success";			
 			}
 			else {
 				return "redirect:/administracao/operadores/novo?msg=failure";
-				//return "";
+				
 			}
 		}
 		catch (Exception e) {
 			System.out.println(e);
 			return "redirect:/administracao/operadores/novo?msg=failure";
-			//return "redirect:/";
+			
 		}
 				
 	}
@@ -122,7 +120,7 @@ public class AdministracaoController {
 		
 		model.addAttribute("cursos", cursos);
 		
-		model.addAttribute("conteudo", "/administracao/cursos/listar");
+		model.addAttribute("conteudo", "administracao/cursos/listar");
 		return new ModelAndView("template_painel", model);		
 	}
 	
@@ -134,7 +132,7 @@ public class AdministracaoController {
 			return new ModelAndView("login");
 		}
 		
-		model.addAttribute("conteudo", "/administracao/cursos/cadastrar");
+		model.addAttribute("conteudo", "administracao/cursos/cadastrar");
 		
 		return new ModelAndView("template_painel", model);		
 	}
@@ -160,11 +158,11 @@ public class AdministracaoController {
 			
 			if (codestatus == 200 || codestatus == 201) {
 				return "redirect:/administracao/cursos/novo?msg=success";
-				//return "";
+				
 			}
 			else {
 				return "redirect:/administracao/cursos/novo?msg=failure";
-				//return "";
+				
 			}
 		}
 		catch (Exception e) {
@@ -192,7 +190,7 @@ public class AdministracaoController {
 		
 		model.addAttribute("documentos", documentos);
 		
-		model.addAttribute("conteudo", "/administracao/documentos/listar");
+		model.addAttribute("conteudo", "administracao/documentos/listar");
 		return new ModelAndView("template_painel", model);		
 	}
 	
@@ -204,7 +202,7 @@ public class AdministracaoController {
 			return new ModelAndView("login");
 		}
 		
-		model.addAttribute("conteudo", "/administracao/documentos/cadastrar");
+		model.addAttribute("conteudo", "administracao/documentos/cadastrar");
 		
 		return new ModelAndView("template_painel", model);		
 	}

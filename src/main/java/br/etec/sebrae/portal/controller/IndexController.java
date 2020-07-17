@@ -22,9 +22,8 @@ public class IndexController {
 		model = auth.VerificaAuth(model, session);
 		if (model == null) {
 			return new ModelAndView("login");
-		}
+		}		
 		
-		//RestTemplate template = new RestTemplate();
 		model.addAttribute("conteudo", "index");
 		return new ModelAndView("template_painel", model);		
 	}

@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>br.etec.sebrae</groupId>
 	<artifactId>portal</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>portal</name>
 	<description>Portal de Gerenciamento de documento seetec</description>
 

@@ -5,25 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.etec.sebrae.portal.dtos.AutenticacaoDto;
 import br.etec.sebrae.portal.dtos.LoginDto;
-import br.etec.sebrae.portal.dtos.ResponseBody;
-import br.etec.sebrae.portal.dtos.Resposta;
-import br.etec.sebrae.portal.dtos.SolicitacoesDto;
 
 @Controller
 public class ImagemController {

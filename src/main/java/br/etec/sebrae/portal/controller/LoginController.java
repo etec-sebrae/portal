@@ -55,13 +55,7 @@ public class LoginController {
 			    @SuppressWarnings("unchecked")
 				Map<String,Object> jsonNodesUser = gson.fromJson(jsonSemToken, Map.class);
 			    String jsonSemPessoa = gson.toJson(jsonNodesUser.get("usuario"));
-			    recuperaUsuario = gson.fromJson(jsonSemPessoa, RetornoLogin.class);
-			    
-			    /*if (recuperaPessoa.getTipo().toString() != "FUNCIONARIO") {
-			    	System.out.print(recuperaPessoa.getTipo());
-			    	session.setAttribute("msg_login", "Acesso negado");
-			    	return "redirect:/";
-			    }*/
+			    recuperaUsuario = gson.fromJson(jsonSemPessoa, RetornoLogin.class);			
 			    
 			    String permissao = recuperaUsuario.getPerfil();
 			    String user_token = recuperaToken.getToken();
