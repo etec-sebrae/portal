@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<div class="content-wrapper" th:fragment="conteudo">
+		<div class="row">
+
+			
+			<div class="col-md-12 grid-margin">
+				<div id="divAlerta"></div>
+				<div class="d-flex justify-content-between align-items-center">
+					<div>
+						<h4 class="font-weight-bold mb-0">Cadastrar novo curso</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-12 grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Formulário de registro</h4>
+						<p class="card-description">*Todos os campos são <code>obrigatórios</code></p>
+						<form action="/administracao/cursos/cadastrar" method="post" class="forms-sample">
+							<div class="form-group row">
+								<label for="nome" class="col-sm-3 col-form-label">Nome do curso</label>
+								<div class="col-sm-9">
+									<input type="text" name="nome" id="nome" placeholder="Digite o nome do curso" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="descricao" class="col-sm-3 col-form-label">Descrição do curso</label>
+								<div class="col-sm-9">
+									<input type="text" name="descricao" id="descricao" placeholder="Descrição do curso" class="form-control" required>
+								</div>
+							</div>
+														
+							<button type="submit" class="btn btn-primary mr-2">Enviar</button>
+							<button class="btn btn-light" type="reset">Cancelar</button>
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>  
+</html>

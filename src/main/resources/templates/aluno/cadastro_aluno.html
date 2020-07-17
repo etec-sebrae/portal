@@ -1,1 +1,81 @@
-<h1> Cadastro de Aluno </h1>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<div class="content-wrapper" th:fragment="conteudo">
+		<div class="row">
+
+			
+			<div class="col-md-12 grid-margin">
+				<div id="divAlerta"></div>
+				<div class="d-flex justify-content-between align-items-center">
+					<div>
+						<h4 class="font-weight-bold mb-0">Cadastrar novo aluno</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="row">
+			<div class="col-md-12 grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">Formulário de registro</h4>
+						<p class="card-description">*Todos os campos são <code>obrigatórios</code></p>
+						<form action="/aluno/cadastro" method="post" class="forms-sample">
+							<div class="form-group row">
+								<label for="nome" class="col-sm-3 col-form-label">Nome Completo</label>
+								<div class="col-sm-9">
+									<input type="text" name="nome" id="nome" placeholder="Digite o nome do aluno" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="password" class="col-sm-3 col-form-label">Senha</label>
+								<div class="col-sm-9">
+									<input type="password" name="senha" id="senha" placeholder="Digite a senha do aluno" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="rg" class="col-sm-3 col-form-label">RG</label>
+								<div class="col-sm-9">
+									<input type="text" name="rg" id="rg" placeholder="Digite o RG do aluno" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="password" class="col-sm-3 col-form-label">CPF</label>
+								<div class="col-sm-9">
+									<input type="text" name="cpf" id="cpf" placeholder="Digite o CPF do aluno" class="form-control" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="email" class="col-sm-3 col-form-label">E-mail</label>
+								<div class="col-sm-9">
+									<input type="email" name="email" id="email" placeholder="Digite o e-mail do aluno" required class="form-control">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="data_nasc" class="col-sm-3 col-form-label">Data de nascimento</label>
+								<div class="col-sm-9">
+									<input type="date" name="data_nasc" id="data_nasc" placeholder="Digite a data de nascimento do aluno" class="form-control">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="curso" class="col-sm-3 col-form-label">Curso</label>
+								<div class="col-sm-9">
+									<select  required class="form-control" multiple name="select_cursos">
+										<option th:each="cursos : ${cursos}" th:value="${cursos.id}" th:text="${cursos.nome}"></option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="matricula" class="col-sm-3 col-form-label">Número da matricula</label>
+								<div class="col-sm-9">
+									<input type="number" name="matricula" id="matricula" placeholder="Digite a matricula do aluno" required class="form-control">
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary mr-2">Enviar</button>
+							<button class="btn btn-light" type="reset">Cancelar</button>
+                        </form>
+					</div>
+				  </div>
+			</div>
+		</div>
+	</div>  
+</html>

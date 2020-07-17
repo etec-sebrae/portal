@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div class="content-wrapper" th:fragment="conteudo">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div id="divAlerta"></div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h4 class="font-weight-bold mb-0">Alunos</h4>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-icon-text btn-rounded" href="/aluno/cadastrar">
+                        <i class="ti-plus btn-icon-prepend"></i>Novo Aluno
+                    </a>
+                    <button type="button" class="btn btn-primary btn-icon-text btn-rounded">
+                        <i class="ti-share-alt btn-icon-prepend"></i>Importar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title mb-0">Lista de alunos</p>
+                    <div class="table-responsive">
+                        <div style="padding: 15px;">
+                            <table class="table display nowrap" style="width:100%" id="table_alunos">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Curso</th>
+                                        <th>CPF</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="alunos : ${alunos}">
+                                        <td><span th:text="${alunos.nome}"></span></td>
+                                        <td><span th:text="${alunos.rg}"></span></td>
+                                        <td><span th:text="${alunos.cpf}"></span></td>
+
+                                        <td>
+                                            <button type="button" class="btn btn-success btn-icon-text btn-sm">
+                                                <i class="ti-files btn-icon-prepend"></i>
+                                                Ver solicitações
+                                            </button>
+                                            <button type="button" class="btn btn-warning btn-icon-text btn-sm">
+                                                <i class="ti-write btn-icon-prepend"></i>
+                                                Editar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#table_alunos').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+</div>
+
+</html>

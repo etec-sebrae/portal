@@ -8,16 +8,35 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <a class="nav-link" th:href="@{/solicitacoes/consultar/}">
                     <i class="ti-write menu-icon"></i>
                     <span class="menu-title">Solicitações</span>
-                    <i class="menu-arrow"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/eventos/}">
+                    <i class="ti-star menu-icon"></i>
+                    <span class="menu-title">Eventos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/aluno/consultar/}">
+                    <i class="ti-face-smile menu-icon"></i>
+                    <span class="menu-title">Alunos</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                  <i class="ti-lock menu-icon"></i>
+                    <span class="menu-title">Administração</span>
+                  <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="ui-basic">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="#">Bilhete Único</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="#">Certificados</a></li>
-                    </ul>
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" th:href="@{/administracao/cursos/}">Cursos</a></li>
+                    <li class="nav-item"> <a class="nav-link" th:href="@{/administracao/operadores/}">Operadores</a></li>
+                    <li class="nav-item"> <a class="nav-link" th:href="@{/administracao/documentos/}">Documentos</a></li>
+                  </ul>
                 </div>
             </li>
         </ul>

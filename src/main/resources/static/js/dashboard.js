@@ -1,6 +1,6 @@
-(function($) {
+(function ($) {
   'use strict';
-  $(function() {
+  $(function () {
     if ($("#order-chart").length) {
       var areaData = {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
@@ -13,7 +13,7 @@
             borderColor: [
               'transparent'
             ],
-            borderWidth:3,
+            borderWidth: 3,
             fill: 'origin',
             label: "services"
           },
@@ -25,7 +25,7 @@
             borderColor: [
               'transparent'
             ],
-            borderWidth:3,
+            borderWidth: 3,
             fill: 'origin',
             label: "purchases"
           }
@@ -97,15 +97,15 @@
         data: {
           labels: ["Jan", "Feb", "Mar", "Apr", "May"],
           datasets: [{
-              label: 'Offline Sales',
-              data: [480, 230, 470, 210, 330],
-              backgroundColor: '#8EB0FF'
-            },
-            {
-              label: 'Online Sales',
-              data: [400, 340, 550, 480, 170],
-              backgroundColor: '#316FFF'
-            }
+            label: 'Offline Sales',
+            data: [480, 230, 470, 210, 330],
+            backgroundColor: '#8EB0FF'
+          },
+          {
+            label: 'Online Sales',
+            data: [400, 340, 550, 480, 170],
+            backgroundColor: '#316FFF'
+          }
           ]
         },
         options: {
@@ -162,12 +162,12 @@
       var areaData = {
         labels: ["Jan", "Feb", "Mar"],
         datasets: [{
-            data: [100, 50, 50],
-            backgroundColor: [
-              "#71c016", "#8caaff", "#490fcc",
-            ],
-            borderColor: "rgba(0,0,0,0)"
-          }
+          data: [100, 50, 50],
+          backgroundColor: [
+            "#71c016", "#8caaff", "#490fcc",
+          ],
+          borderColor: "rgba(0,0,0,0)"
+        }
         ]
       };
       var areaOptions = {
@@ -177,47 +177,47 @@
         cutoutPercentage: 78,
         elements: {
           arc: {
-              borderWidth: 4
+            borderWidth: 4
           }
-        },      
+        },
         legend: {
           display: false
         },
         tooltips: {
           enabled: true
         },
-        legendCallback: function(chart) { 
+        legendCallback: function (chart) {
           var text = [];
           text.push('<div class="report-chart">');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Offline sales</p></div>');
-            text.push('<p class="mb-0">22789</p>');
-            text.push('</div>');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Online sales</p></div>');
-            text.push('<p class="mb-0">94678</p>');
-            text.push('</div>');
-            text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[2] + '"></div><p class="mb-0">Returns</p></div>');
-            text.push('<p class="mb-0">12097</p>');
-            text.push('</div>');
+          text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[0] + '"></div><p class="mb-0">Offline sales</p></div>');
+          text.push('<p class="mb-0">22789</p>');
+          text.push('</div>');
+          text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[1] + '"></div><p class="mb-0">Online sales</p></div>');
+          text.push('<p class="mb-0">94678</p>');
+          text.push('</div>');
+          text.push('<div class="d-flex justify-content-between mx-4 mx-xl-5 mt-3"><div class="d-flex align-items-center"><div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: ' + chart.data.datasets[0].backgroundColor[2] + '"></div><p class="mb-0">Returns</p></div>');
+          text.push('<p class="mb-0">12097</p>');
+          text.push('</div>');
           text.push('</div>');
           return text.join("");
         },
       }
       var northAmericaChartPlugins = {
-        beforeDraw: function(chart) {
+        beforeDraw: function (chart) {
           var width = chart.chart.width,
-              height = chart.chart.height,
-              ctx = chart.chart.ctx;
-      
+            height = chart.chart.height,
+            ctx = chart.chart.ctx;
+
           ctx.restore();
           var fontSize = 3.125;
           ctx.font = "600 " + fontSize + "em sans-serif";
           ctx.textBaseline = "middle";
           ctx.fillStyle = "#000";
-      
+
           var text = "63",
-              textX = Math.round((width - ctx.measureText(text).width) / 2),
-              textY = height / 2;
-      
+            textX = Math.round((width - ctx.measureText(text).width) / 2),
+            textY = height / 2;
+
           ctx.fillText(text, textX, textY);
           ctx.save();
         }
@@ -234,3 +234,66 @@
 
   });
 })(jQuery);
+
+function Mensagem() {
+  var path = window.location.pathname;
+  var query = location.search.slice(1);
+  var partes = query.split('&');
+  var data = {};
+  partes.forEach(function (parte) {
+      var chaveValor = parte.split('=');
+      var chave = chaveValor[0];
+      var valor = chaveValor[1];
+      data[chave] = valor;
+  });
+  
+  if (data['msg'] != null || data['msg'] != undefined){
+      if(path == 'aluno/consultar'){
+        if (data['msg'] == 'success'){
+          criaAlerta("success", "Aluno registrado com sucesso!");
+        }
+        else
+        {
+          criaAlerta("danger", "Não foi possível registrar o aluno!");
+        }
+      }
+      else if(path == '/administracao/operadores/novo'){
+        if (data['msg'] == 'success'){
+          criaAlerta("success", "Operador registrado com sucesso!");
+        }
+        else
+        {
+          criaAlerta("danger", "Não foi possível registrar o operador!");
+        }
+      }
+      else if(path == '/administracao/cursos/novo'){
+        if (data['msg'] == 'success'){
+          criaAlerta("success", "Curso registrado com sucesso!");
+        }
+        else
+        {
+          criaAlerta("danger", "Não foi possível registrar o curso!");
+        }
+      }
+      else if(path == '/aluno/consultar'){
+        if (data['msg'] == 'success'){
+          criaAlerta("success", "Aluno registrado com sucesso!");
+        }
+        else
+        {
+          criaAlerta("danger", "Não foi possível registrar o aluno!");
+        }
+      }
+  }
+
+}
+
+function criaAlerta(tipo, mensagem){
+  var alerta = document.createElement("div");
+  var divAlerta = document.getElementById("divAlerta");
+  alerta.setAttribute("class", "col-md-12 grid-margin alert alert-"+ tipo +" alert-dismissible fade show");
+  alerta.setAttribute("role", "alert");
+  alerta.innerHTML = mensagem;
+  alerta.innerHTML += "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"
+  divAlerta.appendChild(alerta);
+}
