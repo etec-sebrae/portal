@@ -275,6 +275,15 @@ function Mensagem() {
           criaAlerta("danger", "Não foi possível registrar o curso!");
         }
       }
+      else if(path == '/aluno/consultar'){
+        if (data['msg'] == 'success'){
+          criaAlerta("success", "Aluno registrado com sucesso!");
+        }
+        else
+        {
+          criaAlerta("danger", "Não foi possível registrar o aluno!");
+        }
+      }
   }
 
 }

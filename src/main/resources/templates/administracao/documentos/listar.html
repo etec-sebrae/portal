@@ -2,18 +2,14 @@
 <div class="content-wrapper" th:fragment="conteudo">
     <div class="row">
         <div class="col-md-12 grid-margin">
-            <div id="divAlerta"></div>
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h4 class="font-weight-bold mb-0">Alunos</h4>
+                    <h4 class="font-weight-bold mb-0">Documentos das solicitações</h4>
                 </div>
                 <div>
-                    <a class="btn btn-primary btn-icon-text btn-rounded" href="/aluno/cadastrar">
-                        <i class="ti-plus btn-icon-prepend"></i>Novo Aluno
+                    <a class="btn btn-primary btn-icon-text btn-rounded" th:href="@{/administracao/documentos/novo}">
+                        <i class="ti-plus btn-icon-prepend"></i>Novo tipo de documento
                     </a>
-                    <button type="button" class="btn btn-primary btn-icon-text btn-rounded">
-                        <i class="ti-share-alt btn-icon-prepend"></i>Importar
-                    </button>
                 </div>
             </div>
         </div>
@@ -23,29 +19,24 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-title mb-0">Lista de alunos</p>
+                    <p class="card-title mb-0">Registro dos tipos de documentos</p>
                     <div class="table-responsive">
                         <div style="padding: 15px;">
-                            <table class="table display nowrap" style="width:100%" id="table_alunos">
+                            <table class="table display nowrap" style="width:100%" id="table_documentos">
                                 <thead>
                                     <tr>
+                                        <th>Cod</th>
                                         <th>Nome</th>
-                                        <th>Curso</th>
-                                        <th>CPF</th>
+                                        <th>Descrição</th>
                                         <th>Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="alunos : ${alunos}">
-                                        <td><span th:text="${alunos.nome}"></span></td>
-                                        <td><span th:text="${alunos.rg}"></span></td>
-                                        <td><span th:text="${alunos.cpf}"></span></td>
-
+                                    <tr th:each="documentos : ${documentos}">
+                                        <td><span th:text="${documentos.id}"></span></td>
+                                        <td><span th:text="${documentos.nome}"></span></td>
+                                        <td><span th:text="${documentos.descricao}"></span></td>
                                         <td>
-                                            <button type="button" class="btn btn-success btn-icon-text btn-sm">
-                                                <i class="ti-files btn-icon-prepend"></i>
-                                                Ver solicitações
-                                            </button>
                                             <button type="button" class="btn btn-warning btn-icon-text btn-sm">
                                                 <i class="ti-write btn-icon-prepend"></i>
                                                 Editar
@@ -62,7 +53,7 @@
     </div>
     <script>
         $(document).ready(function () {
-            $('#table_alunos').DataTable({
+            $('#table_documentos').DataTable({
                 responsive: true
             });
         });

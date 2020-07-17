@@ -51,15 +51,12 @@ public class AlunoController {
 		RestTemplate restTemplate = new RestTemplate();
 		
 		final String urilistaAlunos = "https://api-seetec.herokuapp.com/api/aluno";
-
-		
 		ResponseEntity<PessoaDto[]> response = restTemplate.getForEntity(urilistaAlunos,PessoaDto[].class);
 		PessoaDto[] alunos = response.getBody();
 
 		//System.out.println(alunos[0].getUsuario().getEmail());
 		
 		model.addAttribute("alunos", alunos);
-		
 		model.addAttribute("conteudo", "/aluno/alunos");
 		
 		return new ModelAndView("template_painel", model);
@@ -77,7 +74,6 @@ public class AlunoController {
 		ListCursos cursos = new ListCursos();
 		
 		model.addAttribute("cursos", cursos.ListCursos()); 
-		
 		model.addAttribute("conteudo", "/aluno/cadastro_aluno");
 		
 		return new ModelAndView("template_painel", model);		
@@ -93,19 +89,6 @@ public class AlunoController {
 		aluno.setSelect_cursos(null);
 		String str = g.toJson(aluno);
 		Gson gson =  g.fromJson(str, Gson.class);
-		//g.fromJson(str,String.class);
-		
-		
-		
-		System.out.println(gson);
-		
-		/*
-		 * Player p = g.fromJson(jsonString, Player.class)
-		 * 
-		 * Read more:
-		 * https://www.java67.com/2016/10/3-ways-to-convert-string-to-json-object-in-
-		 * java.html#ixzz6SJHrsC7M
-		 */		
 		
 		try {
 			final String urilistaAlunos = "https://api-seetec.herokuapp.com/api/aluno";
@@ -117,9 +100,14 @@ public class AlunoController {
 	        Map<String,Object> jsonNodesUser = gson.fromJson(str, Map.class);
 	        
 	        ResponseEntity<String> response = template.postForEntity(urilistaAlunos, jsonNodesUser, String.class);
-	        
-	        return "redirect:/aluno/consultar?msg=success";
-	        
+			int codestatus = response.getStatusCodeValue();
+
+			if (codestatus == 200 || codestatus == 201) {
+				return "redirect:/aluno/consultar?msg=success";
+			}
+			else {
+				return "redirect:/aluno/consultar?msg=failure";
+			}
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -142,13 +130,6 @@ public class AlunoController {
 			cursos.add(dto);
 		}		
 		return cursos;
-		
-		/*
-		
-		for (int i=0; i <array.length; i++ ) {
-			curso[i].setId(Long.parseLong(array[i]));
-		}*/
-		
 	}
 	
 }

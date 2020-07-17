@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.etec.sebrae.portal.dtos.CursosDto;
+import br.etec.sebrae.portal.dtos.DocumentosDto;
 import br.etec.sebrae.portal.dtos.PessoaDto;
 import br.etec.sebrae.portal.service.VerificaAuth;
 
@@ -172,6 +173,70 @@ public class AdministracaoController {
 		}
 				
 	}
+	
+	@RequestMapping("/administracao/documentos")
+	public ModelAndView Documentos(ModelMap model, HttpSession session) {
+		model = auth.VerificaAuth(model, session);
+		if (model == null) {
+			return new ModelAndView("login");
+		}
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		final String urilistaDocumentos = "https://api-seetec.herokuapp.com/api/documentos";
+		
+		
+		ResponseEntity<DocumentosDto[]> response = restTemplate.getForEntity(urilistaDocumentos,DocumentosDto[].class);
+		DocumentosDto[] documentos = response.getBody();
 
-
+		
+		model.addAttribute("documentos", documentos);
+		
+		model.addAttribute("conteudo", "/administracao/documentos/listar");
+		return new ModelAndView("template_painel", model);		
+	}
+	
+	@RequestMapping("/administracao/documentos/novo")
+	public ModelAndView NovoDocumento(ModelMap model, HttpSession session) {		
+		
+		model = auth.VerificaAuth(model, session);
+		if (model == null) {
+			return new ModelAndView("login");
+		}
+		
+		model.addAttribute("conteudo", "/administracao/documentos/cadastrar");
+		
+		return new ModelAndView("template_painel", model);		
+	}
+	
+	@RequestMapping("/administracao/documentos/cadastrar")
+	public String CadastrarDocumento(DocumentosDto documentos) {		
+		try {
+			HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.APPLICATION_JSON);
+		   
+		    Map<String, String> map = new HashMap<>();
+		    
+		    map.put("nome", documentos.getNome());
+		    map.put("descricao", documentos.getDescricao());
+		    
+			RestTemplate template = new RestTemplate();
+			
+			final String uriDocumentos = "https://api-seetec.herokuapp.com/api/documentos";
+			ResponseEntity<String> response = template.postForEntity(uriDocumentos, map, String.class);
+			int codestatus = response.getStatusCodeValue();
+			
+			if (codestatus == 200 || codestatus == 201) {
+				return "redirect:/administracao/documentos/novo?msg=success";
+			}
+			else {
+				return "redirect:/administracao/documentos/novo?msg=failure";
+			}
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			return "redirect:/administracao/documentos/novo?msg=failure";
+		}
+				
+	}
 }
