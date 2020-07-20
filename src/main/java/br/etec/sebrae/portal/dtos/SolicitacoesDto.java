@@ -4,21 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class SolicitacoesDto implements Serializable{	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -6541520440241118272L;
-	
-	
 	
 	private long id;
 	private int status;
-	private Date data_solicitacao ;
-	private String documento;
-	private String aluno;
-	
-	
+	private Date data_abertura;
+	private Date data_conclusao;
+	private PessoaDto aluno;
+	private CursosDto curso;
 	public long getId() {
 		return id;
 	}
@@ -31,24 +25,30 @@ public class SolicitacoesDto implements Serializable{
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Date getData_solicitacao() {
-		return data_solicitacao;
+	public Date getData_abertura() {
+		return data_abertura;
 	}
-	public void setData_solicitacao(Date data_solicitacao) {
-		this.data_solicitacao = data_solicitacao;
+	public void setData_abertura(Date data_abertura) {
+		this.data_abertura = data_abertura;
 	}
-	public String getDocumento() {
-		return documento;
+	public Date getData_conclusao() {
+		return data_conclusao;
 	}
-	public void setDocumento(String documento) {
-		this.documento = documento;
+	public void setData_conclusao(Date data_conclusao) {
+		this.data_conclusao = data_conclusao;
 	}
-	public String getAluno() {
+	public PessoaDto getAluno() {
 		return aluno;
 	}
-	public void setAluno(String aluno) {
+	public void setAluno(PessoaDto aluno) {
 		this.aluno = aluno;
 	}
-
+	public CursosDto getCurso() {
+		return curso;
+	}
+	public void setCurso(CursosDto curso) {
+		this.curso = curso;
+	}
 	
+
 }

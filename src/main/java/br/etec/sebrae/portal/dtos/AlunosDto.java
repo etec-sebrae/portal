@@ -81,13 +81,6 @@ public class AlunosDto implements Serializable {
 		return select_cursos;
 	}
 	public void setSelect_cursos(String select_cursos) {
-		
-		/*String array[] = select_cursos.split(",");
-		
-		for (int i=0; i <array.length; i++ ) {
-			curso[i].setId(Long.parseLong(array[i]));
-		}*/
-		
 		this.select_cursos = select_cursos;
 	}
 	

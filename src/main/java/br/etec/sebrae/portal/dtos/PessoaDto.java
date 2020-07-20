@@ -2,6 +2,7 @@ package br.etec.sebrae.portal.dtos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,6 +21,7 @@ public class PessoaDto implements Serializable{
 	private String email;
 	private String tipo;
 	private UsuarioDto usuario;
+	private List<CursosDto> cursos;
 	
 	public long getId() {
 		return id;
@@ -75,6 +77,10 @@ public class PessoaDto implements Serializable{
 	public void setUsuario(UsuarioDto usuario) {
 		this.usuario = usuario;
 	}
-	
-	
+	public List<CursosDto> getCursos() {
+		return cursos;
+	}
+	public void setCursos(List<CursosDto> cursos) {
+		this.cursos = cursos;
+	}
 }

@@ -9,6 +9,10 @@ public class CursosDto implements Serializable {
 	private long id;
 	private String nome;
 	private String descricao;
+	private int status;
+	private String codigo;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -27,6 +31,20 @@ public class CursosDto implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	
+	
 	
 	
 }
