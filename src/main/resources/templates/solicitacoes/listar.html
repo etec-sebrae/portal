@@ -8,7 +8,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> 
 
 	<div class="row">
 		<div class="col-md-12 grid-margin stretch-card">
@@ -16,14 +16,14 @@
 				<div class="card-body">
 					<p class="card-title mb-0">Solicitações Recentes</p>
 					<div class="table-responsive" style="padding: 15px;">
-						<table class="table display nowrap" style="width:100%" id="table_solicitacao">
+						<table class="table display nowrap" style="width:100%" id="table">
 							<thead>
 								<tr>
 									<th>Cod</th>
 									<th>Documento</th>
 									<th>Aluno</th>
 									<th>Curso</th>
-									<th>Status</th>
+									<th>Status</th> 
 									<th>Ação</th>
 								</tr>
 							</thead>
@@ -41,17 +41,17 @@
 									</td>
 									<td>
 										<span th:if="${solicitacao.status.equals(1)}">
-											<a class="btn btn-success btn-icon-text btn-sm" th:href="@{/solicitacoes/concluir/{id}(id = ${solicitacao.id}) }">
+											<a class="btn btn-success btn-icon-text btn-sm" th:href="@{/solicitacoes/concluir/2/{id}(id = ${solicitacao.id})}">
 												<i class="ti-check btn-icon-prepend"></i>
-												Concluir
+												Concluir 
 											</a>
-											<a class="btn btn-danger btn-icon-text btn-sm" th:href="@{/solicitacoes/negar/{id}(id = ${solicitacao.id}) }">
+											<a class="btn btn-danger btn-icon-text btn-sm" th:href="@{/solicitacoes/concluir/4/{id}(id = ${solicitacao.id})}">
 												<i class="ti-check btn-icon-prepend"></i>
 												Negar
 											</a>
 										</span>
-										<span th:if="${solicitacao.status.equals(2)}" th:href="@{/solicitacoes/entregar/{id}(id = ${solicitacao.id}) }">
-											<a class="btn btn-success btn-icon-text btn-sm">
+										<span th:if="${solicitacao.status.equals(2)}" >
+											<a class="btn btn-success btn-icon-text btn-sm" th:href="@{/solicitacoes/concluir/3/{id}(id = ${solicitacao.id})}">
 												<i class="ti-check btn-icon-prepend"></i>
 												Entregar
 											</a>
@@ -65,13 +65,6 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		$(document).ready(function () {
-			$('#table_solicitacao').DataTable({
-				responsive: true
-			});
-		});
-	</script>
 </div>
 
 </html>

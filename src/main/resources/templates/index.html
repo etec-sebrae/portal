@@ -1,17 +1,124 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-	<div class="content-wrapper" th:fragment="conteudo">
-		<div class="row">
-			<div class="col-md-12 grid-margin">
-				<div class="d-flex justify-content-between align-items-center">
-					<div>
-						<h4 class="font-weight-bold mb-0">Painel de administração SEETEC <span th:text="${nome}"></span></h4>
+<div class="content-wrapper" th:fragment="conteudo">
+	<div class="row">
+		<div class="col-md-12 grid-margin">
+			<div class="d-flex justify-content-between align-items-center">
+				<div>
+					<h4 class="font-weight-bold mb-0">Painel de administração SEETEC - Bem vindo <span th:text="${nome}"></span>
+					</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-7 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<p class="card-title mb-0">Solicitações Recentes</p>
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Tipo</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Ektor Carlos</td>
+									<td>Bilhete Único</td>
+									<td><label class="badge badge-danger">Pendente</label></td>
+								</tr>
+								<tr>
+									<td>Leonardo Salazar</td>
+									<td>Cópia do Histórico</td>
+									<td><label class="badge badge-warning">Em Andamento</label></td>
+								</tr>
+								<tr>
+									<td>João da Silva</td>
+									<td>Bilhete Único</td>
+									<td><label class="badge badge-success">Completo</label></td>
+								</tr>
+								<tr>
+									<td>Dave</td>
+									<td>Cópia do Histórico</td>
+									<td><label class="badge badge-danger">Pendente</label></td>
+								</tr>
+								<tr>
+									<td>Jose</td>
+									<td>Bilhete Único</td>
+									<td><label class="badge badge-info">Aguardando</label></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-		<div class="row">
-			
+		<div class="col-md-5 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Tarefas</h4>
+					<div class="list-wrapper pt-2">
+						<ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+							<li>
+								<div class="form-check form-check-flat">
+									<label class="form-check-label">
+										<input class="checkbox" type="checkbox">
+										Tarefa 0
+										<i class="input-helper"></i></label>
+								</div>
+								<i class="remove ti-trash"></i>
+							</li>
+							<li class="completed">
+								<div class="form-check form-check-flat">
+									<label class="form-check-label">
+										<input class="checkbox" type="checkbox" checked="">
+										Tarefa 1
+										<i class="input-helper"></i></label>
+								</div>
+								<i class="remove ti-trash"></i>
+							</li>
+							<li>
+								<div class="form-check form-check-flat">
+									<label class="form-check-label">
+										<input class="checkbox" type="checkbox">
+										Tarefa 2
+										<i class="input-helper"></i></label>
+								</div>
+								<i class="remove ti-trash"></i>
+							</li>
+							<li class="completed">
+								<div class="form-check form-check-flat">
+									<label class="form-check-label">
+										<input class="checkbox" type="checkbox" checked="">
+										Tarefa 3
+										<i class="input-helper"></i></label>
+								</div>
+								<i class="remove ti-trash"></i>
+							</li>
+							<li>
+								<div class="form-check form-check-flat">
+									<label class="form-check-label">
+										<input class="checkbox" type="checkbox">
+										Tarefa 4
+										<i class="input-helper"></i></label>
+								</div>
+								<i class="remove ti-trash"></i>
+							</li>
+						</ul>
+					</div>
+					<div class="add-items d-flex mb-0 mt-4">
+						<input type="text" class="form-control todo-list-input mr-2" placeholder="Nova tarefa">
+						<button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i
+								class="ti-location-arrow"></i></button>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>  
+	</div>
+</div>
+
 </html>

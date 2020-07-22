@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div class="content-wrapper" th:fragment="conteudo">
+	<div class="row">
+		<div class="col-md-12 grid-margin">
+			<div class="d-flex justify-content-between align-items-center">
+				<div>
+					<h4 class="font-weight-bold mb-0">Documentos</h4>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+	<div class="row">
+		<div class="col-md-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<p class="card-title mb-0">Documentação Recente</p>
+					<div class="table-responsive" style="padding: 15px;">
+						<table class="table display nowrap" style="width:100%" id="table">
+							<thead>
+								<tr>
+									<th>Cod</th>
+									<th>Documento</th>
+									<th>Aluno</th>
+									<th>Status</th> 
+									<th>Ação</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="documentos : ${documentos}">
+									<td>DC<span th:text="${T(java.lang.String).format('%05d', documentos.idRelatorio)}"></span></td>
+									<td><span th:text="${documentos.descricao}"></span></td>
+									<td><span th:text="${documentos.aluno.nome}"></span></td>
+									<td th:switch="${documentos.status}">
+										<span th:case="1">Pendente</span>
+										<span th:case="2">Concluida</span>
+										<span th:case="4">Negada</span>
+									</td>
+									<td>
+                                        <a class="btn btn-success btn-icon-text btn-sm" th:href="@{/documentos/documento/{id}(id = ${documentos.idRelatorio})}">
+                                            <i class="ti-check btn-icon-prepend"></i>
+                                            Ver Documento 
+                                        </a>
+										<span th:if="${documentos.status.equals(1)}">
+											<a class="btn btn-success btn-icon-text btn-sm" th:href="@{/documentos/concluir/2/{id}(id = ${documentos.idRelatorio})}">
+												<i class="ti-check btn-icon-prepend"></i>
+												Concluir 
+											</a>
+											<a class="btn btn-danger btn-icon-text btn-sm" th:href="@{/documentos/concluir/4/{id}(id = ${documentos.idRelatorio})}">
+												<i class="ti-check btn-icon-prepend"></i>
+												Negar
+											</a>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</html>

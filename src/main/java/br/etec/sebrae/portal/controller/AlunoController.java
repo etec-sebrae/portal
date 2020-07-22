@@ -1,6 +1,7 @@
 package br.etec.sebrae.portal.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +26,10 @@ import com.google.gson.Gson;
 
 import br.etec.sebrae.portal.dtos.AlunosDto;
 import br.etec.sebrae.portal.dtos.CursosDto;
+import br.etec.sebrae.portal.dtos.EventosDto;
 import br.etec.sebrae.portal.dtos.PessoaDto;
+import br.etec.sebrae.portal.service.ListaAlunos;
+import br.etec.sebrae.portal.service.SolicitacoesServices;
 import br.etec.sebrae.portal.service.VerificaAuth;
 import br.etec.sebrae.portal.util.ListCursos;
 
@@ -58,20 +64,34 @@ public class AlunoController {
 
 	@RequestMapping("/cadastrar")
 	public ModelAndView cadastrarAluno(ModelMap model, HttpSession session) {
+		model = auth.VerificaAuth(model, session);
+		if (model == null) {
+			return new ModelAndView("login");
+		}
+		ListCursos cursos = new ListCursos();
+		
+		model.addAttribute("cursos", cursos.ListCursos());		
+		model.addAttribute("conteudo", "aluno/cadastro_aluno");
+		return new ModelAndView("template_painel", model);
+	}
+	
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+	public ModelAndView editarAluno(ModelMap model, HttpSession session, @PathVariable Integer id) {
 
 		model = auth.VerificaAuth(model, session);
 		if (model == null) {
 			return new ModelAndView("login");
 		}
-
+		ListaAlunos aluno = new ListaAlunos();
 		ListCursos cursos = new ListCursos();
 
+		model.addAttribute("aluno", aluno.ListaAluno(id));
 		model.addAttribute("cursos", cursos.ListCursos());
-		model.addAttribute("conteudo", "aluno/cadastro_aluno");
-
-		return new ModelAndView("template_painel", model);
-	}
-
+		
+		model.addAttribute("conteudo", "aluno/editar"); 
+		return new ModelAndView("template_painel", model); 
+	}  
+ 
 	@RequestMapping("/cadastro")
 	public String cadastroAluno(ModelMap model, AlunosDto aluno) {
 
@@ -106,11 +126,50 @@ public class AlunoController {
 		}
 
 	}
-
-	@RequestMapping("/alterar")
-	public String alterarAluno() {
-		return "aluno/alterar_aluno";
+	
+	//@RequestMapping("/alterar")
+	@RequestMapping(value = "/alterar/{id}", method = RequestMethod.POST)
+	public String CadastrarCurso(PessoaDto pessoa, @PathVariable Integer id) {		
+		
+		try {
+			HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.APPLICATION_JSON);
+		   
+		    Map<String, String> map = new HashMap<>();
+		    
+		    map.put("nome", pessoa.getNome());
+		    map.put("rg", pessoa.getRg());
+		    map.put("cpf", pessoa.getCpf());
+		    map.put("email", pessoa.getEmail());
+		    map.put("data_nasc", "2020-07-07");
+		    
+			RestTemplate template = new RestTemplate();
+			
+			final String uriEvento = "https://api-seetec.herokuapp.com/api/aluno/" + Integer.toString(id) ;
+			template.put(uriEvento, map);
+			
+			return "redirect:/aluno/consultar?msg=success";
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			return "redirect:/aluno/consultar?msg=failure";
+		}
+				
 	}
+
+	@RequestMapping(value = "/solicitacoes/{id}", method = RequestMethod.GET)
+	public ModelAndView solicitacoesAlunos (ModelMap model, HttpSession session,  @PathVariable Integer id) {
+		
+		model = auth.VerificaAuth(model, session);
+		if (model == null) {
+			return new ModelAndView("login");
+		}
+		SolicitacoesServices solicitacoes = new SolicitacoesServices();
+		
+		model.addAttribute("solicitacao", solicitacoes.ListaSolicitacoesAluno(id));
+		model.addAttribute("conteudo", "aluno/solicitacoes");
+		return new ModelAndView("template_painel", model);
+	} 
 
 	List<CursosDto> mapperId(String ids) {
 		String array[] = ids.split(",");
@@ -120,7 +179,7 @@ public class AlunoController {
 			dto.setId(Long.parseLong(array[i]));
 			cursos.add(dto);
 		}
-		return cursos;
+		return cursos; 
 	}
 
 }

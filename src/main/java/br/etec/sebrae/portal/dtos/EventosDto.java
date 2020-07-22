@@ -3,6 +3,7 @@ package br.etec.sebrae.portal.dtos;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,10 +17,10 @@ public class EventosDto implements Serializable{
 	private String nome;
 	private String descricao;
 	private int status;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataInicio;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date dataFim;
+	private String dataInicio;
+	private String dataFim;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -44,28 +45,18 @@ public class EventosDto implements Serializable{
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Date getDataInicio() throws ParseException {
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-		String data_string = this.dataInicio.toString();
-		String separados[] = data_string.split(",");
-		data_string = separados[0];
-		Date dataFormatada = formato.parse(data_string); 
-		return dataFormatada;
+	public String getDataInicio() {
+		return dataInicio;
 	}
-	public void setDataInicio(Date dataInicio) throws ParseException {
-		
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-		String data_string = this.dataInicio.toString();
-		String separados[] = data_string.split(",");
-		data_string = separados[0];
-		Date dataFormatada = formato.parse(data_string); 
-		this.dataInicio = dataFormatada;
+	public void setDataInicio(String dataInicio) {
+		this.dataInicio = dataInicio;
 	}
-	public Date getDataFim() {
+	public String getDataFim() {
 		return dataFim;
 	}
-	public void setDataFim(Date dataFim) {
+	public void setDataFim(String dataFim) {
 		this.dataFim = dataFim;
 	}
+	
 		
 }
